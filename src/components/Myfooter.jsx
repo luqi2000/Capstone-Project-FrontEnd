@@ -4,7 +4,7 @@ import { AiOutlineYoutube } from "react-icons/ai";
 
 const Myfooter = () => {
   return (
-    <footer className="footer pt-5">
+    <footer className="footer pt-5 pb-5">
       <div className="container w-50">
         <Row>
           <div className="d-flex">

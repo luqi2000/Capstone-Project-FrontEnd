@@ -30,6 +30,10 @@
   background: linear-gradient(to right, black, rgb(250, 250, 250));
 }
 
+.LoginAndRegister {
+  background: linear-gradient(to right, black, rgb(250, 250, 250));
+}
+
 .custom-link {
   text-decoration: none;
   margin-right: 20px;
