@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Carousel, Col, Container, Row, Spinner } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
+import Myfooter from "./Myfooter";
 
 const MainHome = () => {
   const [products, setProducts] = useState([]);
@@ -36,6 +37,7 @@ const MainHome = () => {
           </Col>
         </Row>
       </Container>
+      <Myfooter />
     </>
   );
 };
