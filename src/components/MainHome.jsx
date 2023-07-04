@@ -18,7 +18,7 @@ const MainHome = () => {
       <MyNavbar />
       <Container fluid>
         <Row className="contentMain justify-content-center contentMain">
-          <Col xs={8}>
+          <Col xs={12} md={8}>
             <Carousel>
               {products.length > 0 ? (
                 products.map(product => (
