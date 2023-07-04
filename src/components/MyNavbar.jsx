@@ -3,7 +3,7 @@ import logo from "./logo.jpeg";
 
 const MyNavbar = () => {
   return (
-    <Navbar expand="sm" className="TopbarBeforeLogin fixed-top">
+    <Navbar expand="sm" className="TopbarBeforeLogin sticky-top">
       <Container fluid>
         <Navbar.Brand href="#home" className="text-white">
           <img src={logo} alt="Logo" className="logo-image" />

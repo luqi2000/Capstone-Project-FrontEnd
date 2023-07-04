@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Carousel } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Carousel, Col, Container, Row, Spinner } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 
 const MainHome = () => {
@@ -15,17 +15,27 @@ const MainHome = () => {
   return (
     <>
       <MyNavbar />
-      <Carousel>
-        {products.map(product => (
-          <Carousel.Item key={product.id}>
-            <img className="d-block w-100" src={product.img} alt={product.name} />
-            <Carousel.Caption>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        ))}
-      </Carousel>
+      <Container fluid>
+        <Row className="contentMain justify-content-center contentMain">
+          <Col xs={8}>
+            <Carousel>
+              {products.length > 0 ? (
+                products.map(product => (
+                  <Carousel.Item key={product.id}>
+                    <img className="d-block w-100" src={product.img} alt={product.name} />
+                    <Carousel.Caption>
+                      <h3 className="carousel-title">{product.name}</h3>
+                      <p className="carousel-description">{product.description}</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                ))
+              ) : (
+                <Spinner animation="border" variant="success" />
+              )}
+            </Carousel>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
