@@ -1,4 +1,4 @@
-import { Card, Container, ListGroup, Row, Col, Spinner, Button } from "react-bootstrap";
+import { Card, Container, ListGroup, Row, Col, Spinner } from "react-bootstrap";
 import LoggedNavbar from "./LoggedNavbar";
 import { useEffect, useState } from "react";
 import Myfooter from "./Myfooter";
@@ -34,16 +34,12 @@ const LoggedHome = () => {
                   <Card.Img variant="top" src={product.img} />
                   <Card.Body>
                     <Card.Title>{product.title}</Card.Title>
-                    <Card.Text>{product.description}</Card.Text>
+                    <Card.Text>{product.name}</Card.Text>
                   </Card.Body>
                   <ListGroup className="list-group-flush">
                     <ListGroup.Item>{product.category}</ListGroup.Item>
                     <ListGroup.Item>{product.price}$</ListGroup.Item>
                   </ListGroup>
-                  <Card.Body>
-                    <Button>More details</Button>
-                    <Button href="#">Add to card</Button>
-                  </Card.Body>
                 </Card>
               </Col>
             ))
