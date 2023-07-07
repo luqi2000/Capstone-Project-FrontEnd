@@ -1,5 +1,6 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import logo from "./logo.jpeg";
+import CartIndicator from "./CartIndicator";
 
 const LoggedNavbar = () => (
   <Navbar expand="sm" className="TopbarBeforeLogin sticky-top">
@@ -10,7 +11,7 @@ const LoggedNavbar = () => (
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto">
-          <Nav.Link href="#link">Shopping Cart</Nav.Link>
+          <CartIndicator />
           <Nav.Link href="#link">Account</Nav.Link>
         </Nav>
       </Navbar.Collapse>
