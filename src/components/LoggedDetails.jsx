@@ -3,10 +3,13 @@ import Myfooter from "./Myfooter";
 import { useLocation } from "react-router-dom";
 import LoggedNavbar from "./LoggedNavbar";
 
+import { useDispatch } from "react-redux";
+
 const LoggedDetails = () => {
   const location = useLocation();
   const product = location.state;
   console.log(product);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -28,7 +31,13 @@ const LoggedDetails = () => {
               <option value="3">4</option>
               <option value="3">5</option>
             </Form.Select>
-            <Button className="mt-2">Add To Card</Button>
+            <Button
+              className="mt-2"
+              onClick={() => {
+                dispatch({ type: "ADD_TO_CART", payload: product });
+              }}>
+              Add To Card
+            </Button>
           </Col>
         </Row>
       </Container>

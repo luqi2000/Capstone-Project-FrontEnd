@@ -39,7 +39,16 @@
   background: linear-gradient(to right, black, rgb(250, 250, 250));
 }
 
+.cart {
+  background: linear-gradient(to right, black, rgb(250, 250, 250));
+}
+
 .custom-link {
   text-decoration: none;
   margin-right: 20px;
+}
+
+.product-cover-small {
+  width: 100px;
+  height: 100px;
 }
