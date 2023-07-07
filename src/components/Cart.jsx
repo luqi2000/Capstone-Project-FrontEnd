@@ -2,10 +2,11 @@ import { Button, Col, ListGroup, Row } from "react-bootstrap";
 import LoggedNavbar from "./LoggedNavbar";
 import Myfooter from "./Myfooter";
 import { FaShoppingCart, FaTrash } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
   const cart = useSelector(state => state.cart.content);
+  const dispatch = useDispatch();
   return (
     <>
       <LoggedNavbar />
@@ -25,7 +26,11 @@ const Cart = () => {
             {cart.length > 0 ? (
               cart.map((product, i) => (
                 <ListGroup.Item key={i}>
-                  <Button variant="danger" onClick={() => {}}>
+                  <Button
+                    variant="danger"
+                    onClick={() => {
+                      dispatch({ type: "REMOVE_FROM_CART", payload: i });
+                    }}>
                     <FaTrash />
                   </Button>
                   <img className="product-cover-small weigth-10px" src={product.img} alt="product selected" />
