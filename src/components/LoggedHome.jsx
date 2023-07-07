@@ -2,10 +2,13 @@ import { Card, Container, ListGroup, Row, Col, Spinner } from "react-bootstrap";
 import LoggedNavbar from "./LoggedNavbar";
 import { useEffect, useState } from "react";
 import Myfooter from "./Myfooter";
+import { useNavigate } from "react-router-dom";
 
 const LoggedHome = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:3001/products")
@@ -29,7 +32,13 @@ const LoggedHome = () => {
             <Spinner animation="border" variant="success" />
           ) : (
             products.map(product => (
-              <Col key={product.id} xs={12} sm={6} md={4} lg={3}>
+              <Col
+                key={product.id}
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                onClick={() => navigate("/products/" + product.id, { state: product })}>
                 <Card>
                   <Card.Img variant="top" src={product.img} />
                   <Card.Body>

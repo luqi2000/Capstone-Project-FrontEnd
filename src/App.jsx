@@ -6,6 +6,7 @@ import NotFound from "./components/NotFound";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import LoggedHome from "./components/LoggedHome";
+import LoggedDetails from "./components/LoggedDetails";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/loggedhome" element={<LoggedHome />} />
+        <Route path="/products/:id" element={<LoggedDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

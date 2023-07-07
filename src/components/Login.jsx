@@ -8,7 +8,7 @@ const Login = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const email = event.target.elements.email.value;
+    const email = event.target.elements.email.value; //They allow you to extract the "email" and "password" text input values ​​from an event
     const password = event.target.elements.password.value;
 
     try {
@@ -22,18 +22,17 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        const token = data.token;
-        // Salva il token nel localStorage o in un altro meccanismo di storage
+        const token = data.token; //taking from json object the token
+        //Save the token in localStorage
         localStorage.setItem("token", token);
-        // Reindirizza alla pagina successiva
+        // send to loggedHome component
         navigate("/loggedHome");
       } else {
         // Gestisci l'errore di autenticazione
-        console.log("Errore di autenticazione");
+        console.log("authentication failure");
       }
     } catch (error) {
-      // Gestisci l'errore di rete
-      console.log("Errore di rete");
+      console.log("Handle network error");
     }
   };
 
