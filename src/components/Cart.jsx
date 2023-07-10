@@ -1,6 +1,5 @@
+import React from "react";
 import { Button, Col, ListGroup, Row } from "react-bootstrap";
-import LoggedNavbar from "./LoggedNavbar";
-import Myfooter from "./Myfooter";
 import { FaShoppingCart, FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCartAction } from "../redux/actions";
@@ -8,16 +7,49 @@ import { removeFromCartAction } from "../redux/actions";
 const Cart = () => {
   const cart = useSelector(state => state.content);
   const dispatch = useDispatch();
+
+  const handlePayment = async () => {
+    // Calcola il totale dei prezzi
+    const total = cart.reduce((accumulator, product) => accumulator + parseFloat(product.price), 0).toFixed(2);
+
+    try {
+      // Invia una richiesta al tuo backend per ottenere l'sessionId
+      const response = await fetch("http://localhost:3001/api/pagamento", {
+        method: "POST",
+        body: JSON.stringify({ total: total }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const { sessionId } = data; // Ottieni l'sessionId dalla risposta del backend
+
+        // Esegui il redirect a Stripe Checkout utilizzando l'sessionId
+        const stripe = window.Stripe(
+          "pk_test_51NSKqzJetIPju7BqPH5T3DcJ51PCUuGIsC5j2Je6s0oywMXNUIAv8bBNfAbnN5wQy2AUtjykrknOJErazSwzd1ic00mp4Ht80W"
+        );
+        await stripe.redirectToCheckout({ sessionId: sessionId });
+      } else {
+        // Gestisci l'errore dalla risposta del backend
+      }
+    } catch (error) {
+      console.error("Errore durante la richiesta di pagamento:", error);
+    }
+  };
+
   return (
     <>
-      <LoggedNavbar />
       <Row className="cart">
-        <Col sm={12} className="font-weight-bold text-white mb-5 ms-3">
-          TOTAL:{" "}
+        <Col className="font-weight-bold text-white mb-5 ms-3 d-flex justify-content-between">
           <span className="display-6 text-primary">
-            {cart.reduce((acc, currentValue) => acc + parseFloat(currentValue.price), 0).toFixed(2)}${" "}
-            {/* toFixed for having a decimal number */}
+            TOTAL: {cart.reduce((acc, currentValue) => acc + parseFloat(currentValue.price), 0).toFixed(2)}$
           </span>
+          <div>
+            <h1>Pagamento</h1>
+            <button onClick={handlePayment}>Effettua il pagamento</button>
+          </div>
         </Col>
       </Row>
 
@@ -27,11 +59,7 @@ const Cart = () => {
             {cart.length > 0 ? (
               cart.map((product, i) => (
                 <ListGroup.Item key={i}>
-                  <Button
-                    variant="danger"
-                    onClick={() => {
-                      dispatch(removeFromCartAction(i));
-                    }}>
+                  <Button variant="danger" onClick={() => dispatch(removeFromCartAction(i))}>
                     <FaTrash />
                   </Button>
                   <img className="product-cover-small weigth-10px" src={product.img} alt="product selected" />
@@ -39,9 +67,8 @@ const Cart = () => {
                 </ListGroup.Item>
               ))
             ) : (
-              <ListGroup.Item className="lead ">
+              <ListGroup.Item className="lead">
                 <span className="text-primary opacity-50 fs-1 me-2">
-                  {" "}
                   <FaShoppingCart />
                 </span>
                 Your cart is empty
@@ -50,8 +77,6 @@ const Cart = () => {
           </ListGroup>
         </Col>
       </Row>
-
-      <Myfooter />
     </>
   );
 };
