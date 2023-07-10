@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import LoggedNavbar from "./LoggedNavbar";
 
 import { useDispatch } from "react-redux";
+import { addToCartAction } from "../redux/actions";
 
 const LoggedDetails = () => {
   const location = useLocation();
@@ -34,7 +35,8 @@ const LoggedDetails = () => {
             <Button
               className="mt-2"
               onClick={() => {
-                dispatch({ type: "ADD_TO_CART", payload: product });
+                // dispatch({ type: ADD_TO_CART, payload: product });
+                dispatch(addToCartAction(product));
               }}>
               Add To Card
             </Button>
