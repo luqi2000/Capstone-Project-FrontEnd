@@ -33,13 +33,14 @@ const LoggedHome = () => {
           ) : (
             products.map(product => (
               <Col
+                className="mb-4"
                 key={product.id}
                 xs={12}
                 sm={6}
                 md={4}
                 lg={3}
                 onClick={() => navigate("/products/" + product.id, { state: product })}>
-                <Card>
+                <Card className="loggedCard ">
                   <Card.Img variant="top" src={product.img} />
                   <Card.Body>
                     <Card.Title>{product.title}</Card.Title>

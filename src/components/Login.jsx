@@ -1,4 +1,4 @@
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import MyNavbar from "./MyNavbar";
 import Myfooter from "./Myfooter";
@@ -39,26 +39,33 @@ const Login = () => {
   return (
     <>
       <MyNavbar />
-      <Form className="LoginAndRegister ps-3 pt-5" onSubmit={handleSubmit}>
-        <Form.Group className="mb-3 w-50" controlId="formBasicEmail">
-          <Form.Label className="text-white">Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" name="email" />
-          <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
-        </Form.Group>
+      <Container fluid className="backgroundLogin d-inline-flex">
+        <Row>
+          <Col className="d-flex justify-content-center align-items-center">
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label className="text-white">Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" name="email" />
+                <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
+              </Form.Group>
 
-        <Form.Group className="mb-3 w-50" controlId="formBasicPassword">
-          <Form.Label className="text-white">Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" size="sm" name="password" />
-        </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label className="text-white">Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" name="password" />
+              </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check className="text-white" type="checkbox" label="Check me out" />
-        </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check className="text-white" type="checkbox" label="Check me out" />
+              </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+
       <Myfooter />
     </>
   );
