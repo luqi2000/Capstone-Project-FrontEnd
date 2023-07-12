@@ -10,11 +10,11 @@ const PaymentSuccess = () => {
   }, [navigate]);
 
   return (
-    <>
+    <div className="text-center">
       <div>Thank you for your purchase, your transaction has been accepted. Hope to see you again!</div>
       <div>We have sent you a confirmation email!</div>
       <div>You will be redirected to the home page in 8 second...</div>
-    </>
+    </div>
   );
 };
 export default PaymentSuccess;

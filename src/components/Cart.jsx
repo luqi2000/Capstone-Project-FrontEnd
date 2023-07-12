@@ -3,6 +3,8 @@ import { Button, Col, ListGroup, Row } from "react-bootstrap";
 import { FaShoppingCart, FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCartAction } from "../redux/actions";
+import Myfooter from "./Myfooter";
+import LoggedNavbar from "./LoggedNavbar";
 
 const Cart = () => {
   const cart = useSelector(state => state.content);
@@ -41,6 +43,7 @@ const Cart = () => {
 
   return (
     <>
+      <LoggedNavbar />
       <Row className="cart">
         <Col className="font-weight-bold text-white mb-5 ms-3 d-flex justify-content-between">
           <span className="display-6 text-primary">
@@ -76,6 +79,7 @@ const Cart = () => {
           </ListGroup>
         </Col>
       </Row>
+      <Myfooter />
     </>
   );
 };
