@@ -8,6 +8,8 @@ import Register from "./components/Register";
 import LoggedHome from "./components/LoggedHome";
 import LoggedDetails from "./components/LoggedDetails";
 import Cart from "./components/Cart";
+import PaymentSuccess from "./components/PaymentSuccess";
+import PaymentCancelled from "./components/PaymentCancelled";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/loggedhome" element={<LoggedHome />} />
         <Route path="/products/:id" element={<LoggedDetails />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/payment-cancelled" element={<PaymentCancelled />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
