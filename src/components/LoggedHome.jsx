@@ -26,7 +26,7 @@ const LoggedHome = () => {
   return (
     <>
       <LoggedNavbar />
-      <Container fluid className="loggedHome">
+      <Container fluid>
         <Row>
           {isLoading ? (
             <Spinner animation="border" variant="success" />

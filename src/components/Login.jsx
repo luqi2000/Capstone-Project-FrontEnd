@@ -39,7 +39,7 @@ const Login = () => {
   return (
     <>
       <MyNavbar />
-      <Container fluid className="backgroundLogin d-inline-flex">
+      <Container fluid className="d-inline-flex">
         <Row>
           <Col className="d-flex justify-content-center align-items-center">
             <Form onSubmit={handleSubmit}>

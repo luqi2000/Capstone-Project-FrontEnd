@@ -17,7 +17,7 @@ const MainHome = () => {
     <>
       <MyNavbar />
       <Container fluid>
-        <Row className="contentMain justify-content-center contentMain">
+        <Row className="justify-content-center contentMain">
           <Col xs={12} md={8}>
             <Carousel>
               {products.length > 0 ? (

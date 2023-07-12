@@ -1,53 +1,57 @@
-import { Col, Row } from "react-bootstrap";
-import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
-import { AiOutlineYoutube } from "react-icons/ai";
+import { Col, Container, Row } from "react-bootstrap";
+import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin } from "react-icons/bs";
+import Visa from "../images/visa.png";
+import Mastercard from "../images/mastercard.png";
+import Maestro from "../images/maestro.png";
+import American from "../images/american.png";
 
 const Myfooter = () => {
   return (
-    <footer className="footer pt-5 pb-5">
-      <div className="container w-50">
-        <Row>
-          <div className="d-flex">
-            <div className="d-flex mb-3">
-              <BsFacebook className="me-3 text-white" />
-              <BsInstagram className="me-3 text-white" />
-              <BsTwitter className="me-3 text-white" />
-              <AiOutlineYoutube className="text-white" />
-            </div>
+    <Container fluid className="text-white pt-5">
+      <Row>
+        <Col>
+          <h4>Contact us</h4>
+          <p>
+            <strong>Address: </strong>654 Kingroad avenue
+          </p>
+          <p>
+            <strong>Phone: </strong>+447723006645
+          </p>
+          <p>
+            <strong>Hours Open: </strong>From 8 A.m to 5 P.m
+          </p>
+          <p>
+            <strong>Follow us: </strong>
+          </p>
+          <div className="d-flex mb-3">
+            <BsFacebook className="me-3 text-white" />
+            <BsInstagram className="me-3 text-white" />
+            <BsTwitter className="me-3 text-white" />
+            <BsLinkedin className="text-white" />
           </div>
-          <Col sm={3}>
-            <div className="text-white text-start">
-              <p className="fs-6">Audio and Subtitles</p>
-              <p className="fs-6">Media Center</p>
-              <p className="fs-6">Privacy</p>
-              <p className="fs-6">Contacs us</p>
-              <button className="border border-secondary py-1 text-white bg-transparent mt-4 mb-3">Service Code</button>
-            </div>
-          </Col>
-          <Col sm={3}>
-            <div className="text-white text-start">
-              <p className="fs-6">Audio Description</p>
-              <p className="fs-6">Investor Relations</p>
-              <p className="fs-6">Legal Notices</p>
-            </div>
-          </Col>
-          <Col sm={3}>
-            <div className="text-white text-start">
-              <p className="fs-6">Help Center</p>
-              <p className="fs-6">Jobs</p>
-              <p className="fs-6">Cookie Preferences</p>
-            </div>
-          </Col>
-          <Col sm={3}>
-            <div className="text-white text-start">
-              <p className="fs-6">Gift Cards</p>
-              <p className="fs-6">Terms of Use</p>
-              <p className="fs-6">Corporate Information</p>
-            </div>
-          </Col>
-        </Row>
-      </div>
-    </footer>
+        </Col>
+        <Col>
+          <h4>About</h4>
+          <p>About us</p>
+          <p>Delivery</p>
+          <p>Privacy Policy</p>
+          <p>Tax Policy</p>
+          <p>Fee Policy</p>
+          <p>Terms & Conditions</p>
+        </Col>
+        <Col>
+          <h4>Install App</h4>
+          <p>Available On Google Play Services & App Store</p>
+          <p>Payment method:</p>
+          <p>
+            <img src={Visa} alt="visa" className="me-2" style={{ height: "30px" }} />
+            <img src={Mastercard} alt="visa" className="me-2" style={{ height: "30px" }} />
+            <img src={Maestro} alt="visa" className="me-2" style={{ height: "40px" }} />
+            <img src={American} alt="visa" className="me-2" style={{ height: "60px" }} />
+          </p>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 export default Myfooter;

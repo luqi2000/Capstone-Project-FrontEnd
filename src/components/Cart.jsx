@@ -44,7 +44,7 @@ const Cart = () => {
   return (
     <>
       <LoggedNavbar />
-      <Row className="cart">
+      <Row>
         <Col className="font-weight-bold text-white mb-5 ms-3 d-flex justify-content-between">
           <span className="display-6 text-primary">
             TOTAL: {cart.reduce((acc, currentValue) => acc + parseFloat(currentValue.price), 0).toFixed(2)}$

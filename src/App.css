@@ -1,7 +1,6 @@
-.App {
-  text-align: center;
+body {
+  background: linear-gradient(to right, black, rgb(250, 250, 250));
 }
-
 .TopbarBeforeLogin {
   background: linear-gradient(to right, black, rgb(250, 250, 250));
   padding: 10px;
@@ -22,28 +21,6 @@
   max-width: 100%; /*the text does not exceed the width of the parent element*/
   overflow: hidden;
   text-overflow: ellipsis; /*per aggiungere i puntini di sospensione se il testo viene troncato.*/
-}
-
-.contentMain {
-  background: linear-gradient(to right, black, rgb(250, 250, 250));
-}
-.footer {
-  background: linear-gradient(to right, black, rgb(250, 250, 250));
-}
-
-.LoginAndRegister {
-  background: linear-gradient(to right, black, rgb(250, 250, 250));
-}
-.backgroundLogin {
-  background: linear-gradient(to right, black, rgb(250, 250, 250));
-}
-
-.loggedHome {
-  background: linear-gradient(to right, black, rgb(250, 250, 250));
-}
-
-.cart {
-  background: linear-gradient(to right, black, rgb(250, 250, 250));
 }
 
 .custom-link {

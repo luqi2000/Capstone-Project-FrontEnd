@@ -49,7 +49,7 @@ const Register = () => {
   return (
     <>
       <MyNavbar />
-      <Form className="LoginAndRegister ps-3" onSubmit={handleSubmit}>
+      <Form className="ps-3" onSubmit={handleSubmit}>
         <Form.Group className="mb-3 w-50" controlId="formBasicName">
           <Form.Label className="text-white">Name</Form.Label>
           <Form.Control

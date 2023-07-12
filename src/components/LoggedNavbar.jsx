@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import logo from "./logo.jpeg";
+import logo from "../images/logo.jpeg";
 import CartIndicator from "./CartIndicator";
 
 const LoggedNavbar = () => (
