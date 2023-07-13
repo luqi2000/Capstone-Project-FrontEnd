@@ -5,12 +5,22 @@ import LoggedNavbar from "./LoggedNavbar";
 
 import { useDispatch } from "react-redux";
 import { addToCartAction } from "../redux/actions";
+import { useState } from "react";
 
 const LoggedDetails = () => {
   const location = useLocation();
   const product = location.state;
+  const [quantity, setQuantity] = useState(1);
   console.log(product);
   const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const productsToAdd = Array.from({ length: quantity }, () => product); // Crea un array di prodotti in base alla quantità
+
+    productsToAdd.forEach(product => {
+      dispatch(addToCartAction(product));
+    });
+  };
 
   return (
     <>
@@ -24,7 +34,11 @@ const LoggedDetails = () => {
             <h1>Name: {product.name}</h1>
             <p>Description: {product.description}</p>
             <p>Price: {product.price} $</p>
-            <Form.Select aria-label="Default select example" size="sm">
+            <Form.Select
+              aria-label="Default select example"
+              size="sm"
+              value={quantity}
+              onChange={e => setQuantity(e.target.value)}>
               <option>Quantity</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -32,12 +46,7 @@ const LoggedDetails = () => {
               <option value="3">4</option>
               <option value="3">5</option>
             </Form.Select>
-            <Button
-              className="mt-2"
-              onClick={() => {
-                // dispatch({ type: ADD_TO_CART, payload: product });
-                dispatch(addToCartAction(product));
-              }}>
+            <Button className="mt-2" onClick={handleAddToCart}>
               Add To Card
             </Button>
           </Col>
