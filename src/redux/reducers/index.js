@@ -1,7 +1,8 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions";
+import { ADD_TO_CART, REMOVE_FROM_CART, SAVE_USER } from "../actions";
 
 const initialState = {
-  content: []
+  content: [],
+  user: null
 };
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -16,6 +17,11 @@ const mainReducer = (state = initialState, action) => {
         ...state,
 
         content: state.content.filter((_, i) => i !== action.payload)
+      };
+    case SAVE_USER:
+      return {
+        ...state,
+        user: action.payload
       };
     default:
       return state;
