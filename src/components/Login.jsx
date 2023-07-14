@@ -25,10 +25,11 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        const token = data.token; //taking from json object the token
+        const token = data.accessToken; //taking from json object the token
         //Save the token in localStorage
         localStorage.setItem("token", token);
         // send to loggedHome component
+
         const userId = data.userId;
         dispatch(saveUserAction(userId));
 

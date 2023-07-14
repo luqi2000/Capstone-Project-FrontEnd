@@ -3,7 +3,7 @@ import Myfooter from "./Myfooter";
 import { useLocation } from "react-router-dom";
 import LoggedNavbar from "./LoggedNavbar";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCartAction } from "../redux/actions";
 import { useState } from "react";
 
@@ -12,6 +12,8 @@ const LoggedDetails = () => {
   const product = location.state;
   const [quantity, setQuantity] = useState(1);
   console.log(product);
+  const userId = useSelector(state => state.user);
+  console.log(userId);
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -19,6 +21,24 @@ const LoggedDetails = () => {
 
     productsToAdd.forEach(product => {
       dispatch(addToCartAction(product));
+
+      const token = localStorage.getItem("token");
+      console.log(token);
+
+      // fetch("http://localhost:3001/cart/add?productId=" + product.id + "&quantity=" + quantity + "&userId=" + userId, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: "Bearer " + token
+      //   }
+      // })
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     console.log("Product added to cart:", data);
+      //   })
+      //   .catch(error => {
+      //     console.error("Error adding product to cart:", error);
+      //   });
     });
   };
 

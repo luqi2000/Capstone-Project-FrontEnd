@@ -12,6 +12,6 @@ export const removeFromCartAction = index => {
   return { type: REMOVE_FROM_CART, payload: index };
 };
 
-export const saveUserAction = user => {
-  return { type: SAVE_USER, payload: user };
+export const saveUserAction = userId => {
+  return { type: SAVE_USER, payload: userId };
 };

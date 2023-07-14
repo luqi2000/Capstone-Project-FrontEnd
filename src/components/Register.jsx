@@ -2,8 +2,6 @@ import { Button, Form } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import Myfooter from "./Myfooter";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { saveUserAction } from "../redux/actions";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -12,8 +10,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-
-  const dispatch = useDispatch();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -38,7 +34,6 @@ const Register = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        dispatch(saveUserAction(data));
         setName("");
         setSurname("");
         setEmail("");
