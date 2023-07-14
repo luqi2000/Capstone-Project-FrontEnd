@@ -2,9 +2,12 @@ import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import MyNavbar from "./MyNavbar";
 import Myfooter from "./Myfooter";
+import { useDispatch } from "react-redux";
+import { saveUserAction } from "../redux/actions";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -26,6 +29,9 @@ const Login = () => {
         //Save the token in localStorage
         localStorage.setItem("token", token);
         // send to loggedHome component
+        const userId = data.userId;
+        dispatch(saveUserAction(userId));
+
         navigate("/loggedHome");
       } else {
         // Gestisci l'errore di autenticazione
