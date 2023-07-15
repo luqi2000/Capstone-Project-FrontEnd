@@ -1,4 +1,5 @@
-import React from "react";
+// import React, { useEffect } from "react";
+// import emailjs from "emailjs-com";
 import { Button, Col, ListGroup, Row } from "react-bootstrap";
 import { FaShoppingCart, FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +10,26 @@ import LoggedNavbar from "./LoggedNavbar";
 const Cart = () => {
   const cart = useSelector(state => state.content);
   const dispatch = useDispatch();
+  // useEffect(() => {
+  //   emailjs.init("rtR39qQNwpxaz7EU_");
+  // }, []);
+
+  // const sendEmail = recipientEmail => {
+  //   const templateParams = {
+  //     to_name: "luqman",
+  //     message: "Thank you for your purchase",
+  //     reply_to: recipientEmail
+  //   };
+
+  //   emailjs
+  //     .send("service_cjjuqlb", "template_r9ell6c", templateParams)
+  //     .then(response => {
+  //       console.log("Email inviata con successo", response);
+  //     })
+  //     .catch(error => {
+  //       console.error("Errore durante l'invio dell'email:", error);
+  //     });
+  // };
 
   const handlePayment = async () => {
     // Calcola il totale dei prezzi
@@ -33,6 +54,17 @@ const Cart = () => {
           "pk_test_51NSKqzJetIPju7BqPH5T3DcJ51PCUuGIsC5j2Je6s0oywMXNUIAv8bBNfAbnN5wQy2AUtjykrknOJErazSwzd1ic00mp4Ht80W"
         );
         await stripe.redirectToCheckout({ sessionId: sessionId });
+        // stripe
+        //   .retrieveSession(sessionId)
+        //   .then(session => {
+        //     const userEmail = session.customer_details.email;
+        //     const userName = session.customer_details.name;
+        //     console.log(userEmail, userName);
+        //     sendEmail(userEmail, userName);
+        //   })
+        // .catch(error => {
+        //   console.error("Errore durante il recupero della sessione Stripe:", error);
+        // });
       } else {
         // Gestisci l'errore dalla risposta del backend
       }
