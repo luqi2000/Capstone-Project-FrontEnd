@@ -1,22 +1,30 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, SAVE_USER } from "../actions";
 
 const initialState = {
-  content: [],
-  user: null
+  user: null,
+  content: {}
 };
+
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
+      const { productsToAdd, userId } = action.payload;
       return {
         ...state,
-
-        content: [...state.content, action.payload]
+        content: {
+          ...state.content,
+          [userId]: [...(state.content[userId] || []), productsToAdd]
+        }
       };
     case REMOVE_FROM_CART:
+      const { index, userId: userIdToRemove } = action.payload;
+      const updatedContent = state.content[userIdToRemove].filter((_, i) => i !== index);
       return {
         ...state,
-
-        content: state.content.filter((_, i) => i !== action.payload)
+        content: {
+          ...state.content,
+          [userIdToRemove]: updatedContent
+        }
       };
     case SAVE_USER:
       return {
@@ -27,4 +35,5 @@ const mainReducer = (state = initialState, action) => {
       return state;
   }
 };
+
 export default mainReducer;

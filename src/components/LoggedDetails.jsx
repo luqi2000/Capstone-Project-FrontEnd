@@ -20,7 +20,7 @@ const LoggedDetails = () => {
     const productsToAdd = Array.from({ length: quantity }, () => product); // Crea un array di prodotti in base alla quantità
 
     productsToAdd.forEach(product => {
-      dispatch(addToCartAction(product));
+      dispatch(addToCartAction(product, userId));
 
       const token = localStorage.getItem("token");
       console.log(token);

@@ -8,7 +8,9 @@ import Myfooter from "./Myfooter";
 import LoggedNavbar from "./LoggedNavbar";
 
 const Cart = () => {
-  const cart = useSelector(state => state.content);
+  const content = useSelector(state => state.content);
+  const userId = useSelector(state => state.user);
+  const cart = content[userId] || [];
   const dispatch = useDispatch();
   // useEffect(() => {
   //   emailjs.init("rtR39qQNwpxaz7EU_");
@@ -93,7 +95,7 @@ const Cart = () => {
             {cart.length > 0 ? (
               cart.map((product, i) => (
                 <ListGroup.Item key={i}>
-                  <Button variant="danger" onClick={() => dispatch(removeFromCartAction(i))}>
+                  <Button variant="danger" onClick={() => dispatch(removeFromCartAction(i, userId))}>
                     <FaTrash />
                   </Button>
                   <img className="product-cover-small weigth-10px" src={product.img} alt="product selected" />
