@@ -84,7 +84,9 @@ const Cart = () => {
             TOTAL: {cart.reduce((acc, currentValue) => acc + parseFloat(currentValue.price), 0).toFixed(2)}$
           </span>
           <div>
-            <button onClick={handlePayment}>Checkout</button>
+            <Button className="me-4" onClick={handlePayment}>
+              Checkout
+            </Button>
           </div>
         </Col>
       </Row>

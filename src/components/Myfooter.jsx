@@ -24,10 +24,15 @@ const Myfooter = () => {
             <strong>Follow us: </strong>
           </p>
           <div className="d-flex mb-3">
-            <BsFacebook className="me-3 text-white" />
-            <BsInstagram className="me-3 text-white" />
-            <BsTwitter className="me-3 text-white" />
-            <BsLinkedin className="text-white" />
+            <BsFacebook size={30} className="me-3 text-white" />
+            <BsInstagram size={30} className="me-3 text-white" />
+            <BsTwitter size={30} className="me-3 text-white" />
+            <a
+              href="https://www.linkedin.com/in/luqman-mohammad-full-stack-developer/"
+              target="_blank"
+              rel="noopener noreferrer">
+              <BsLinkedin size={30} className="text-white" />
+            </a>
           </div>
         </Col>
         <Col>
