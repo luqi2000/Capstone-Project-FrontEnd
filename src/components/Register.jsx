@@ -2,6 +2,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import MyNavbar from "./MyNavbar";
 import Myfooter from "./Myfooter";
 import { useState } from "react";
+import emailjs from "emailjs-com";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -14,6 +15,26 @@ const Register = () => {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const sendEmailWithCredentials = () => {
+    const serviceId = "service_cjjuqlb";
+    const templateId = "template_ts6od3p";
+    const userId = "YgXvC_S8paTXgIWsh";
+
+    const templateParams = {
+      name: name,
+      email: email,
+      password: password
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, userId).then(
+      response => {
+        console.log("Email sent successfully:", response);
+      },
+      error => {
+        console.error("Error sending email:", error);
+      }
+    );
+  };
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -43,6 +64,7 @@ const Register = () => {
           setPassword("");
           setAddress("");
           setPhoneNumber("");
+          sendEmailWithCredentials();
         } else {
           // Registration failed
           response.json().then(data => {

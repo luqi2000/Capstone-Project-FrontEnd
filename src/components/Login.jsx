@@ -1,13 +1,15 @@
-import { Button, Form, Container, Row, Col } from "react-bootstrap";
+import { Button, Form, Container, Row, Col, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import MyNavbar from "./MyNavbar";
 import Myfooter from "./Myfooter";
 import { useDispatch } from "react-redux";
 import { saveUserAction } from "../redux/actions";
+import { useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -37,10 +39,14 @@ const Login = () => {
       } else {
         // Gestisci l'errore di autenticazione
         console.log("authentication failure");
+        setShowModal(true);
       }
     } catch (error) {
       console.log("Handle network error");
     }
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -72,6 +78,17 @@ const Login = () => {
           </Col>
         </Row>
       </Container>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>User not found. Please check your credentials and try again.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <Myfooter />
     </>
