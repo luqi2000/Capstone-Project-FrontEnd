@@ -25,20 +25,31 @@ const LoggedDetails = () => {
       const token = localStorage.getItem("token");
       console.log(token);
 
-      // fetch("http://localhost:3001/cart/add?productId=" + product.id + "&quantity=" + quantity + "&userId=" + userId, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     Authorization: "Bearer " + token
-      //   }
-      // })
-      //   .then(response => response.json())
-      //   .then(data => {
-      //     console.log("Product added to cart:", data);
-      //   })
-      //   .catch(error => {
-      //     console.error("Error adding product to cart:", error);
-      //   });
+      fetch("http://localhost:3001/cart/add?productId=" + product.id + "&quantity=" + quantity + "&userId=" + userId, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+              return response.json(); // Effettua il parsing solo se la risposta è un JSON valido
+            } else {
+              return response.text(); // Altrimenti, ritorna la risposta come testo
+            }
+          } else {
+            throw new Error("Network response was not ok");
+          }
+        })
+        .then(data => {
+          console.log("Product added to cart:", data);
+        })
+        .catch(error => {
+          console.error("Error adding product to cart:", error);
+        });
     });
   };
 
