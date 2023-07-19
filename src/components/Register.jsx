@@ -97,7 +97,7 @@ const Register = () => {
           <Form.Label className="text-white">Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Please insert your name"
+            placeholder="Insert your name"
             value={name}
             onChange={e => setName(e.target.value)}
             required
@@ -108,7 +108,7 @@ const Register = () => {
           <Form.Label className="text-white">Surname</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Please insert your surname"
+            placeholder="Insert your surname"
             value={surname}
             onChange={e => setSurname(e.target.value)}
             required
@@ -119,7 +119,7 @@ const Register = () => {
           <Form.Label className="text-white">Email address</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter email"
+            placeholder="Insert email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             required
@@ -131,7 +131,7 @@ const Register = () => {
           <Form.Label className="text-white">Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Please insert your password"
+            placeholder="Insert your password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
@@ -143,7 +143,7 @@ const Register = () => {
           <Form.Label className="text-white">Address</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Please insert your full address"
+            placeholder="Insert your full address"
             value={address}
             onChange={e => setAddress(e.target.value)}
             required
@@ -154,7 +154,7 @@ const Register = () => {
           <Form.Label className="text-white">Phone Number</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Please insert your Phone number"
+            placeholder="Insert your Phone number"
             value={phoneNumber}
             onChange={e => setPhoneNumber(e.target.value)}
             required

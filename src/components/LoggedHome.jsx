@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Container, ListGroup, Row, Col, Spinner, Button } from "react-bootstrap";
+import { Card, Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import LoggedNavbar from "./LoggedNavbar";
 import Myfooter from "./Myfooter";
 import { useNavigate } from "react-router-dom";
@@ -72,13 +72,10 @@ const LoggedHome = () => {
                   <Card className="loggedCard ">
                     <Card.Img variant="top" src={product.img} />
                     <Card.Body>
-                      <Card.Title>{product.title}</Card.Title>
                       <Card.Text>{product.name}</Card.Text>
+                      <Card.Text>{product.category}</Card.Text>
+                      <Card.Text>{product.price}$</Card.Text>
                     </Card.Body>
-                    <ListGroup className="list-group-flush">
-                      <ListGroup.Item>{product.category}</ListGroup.Item>
-                      <ListGroup.Item>{product.price}$</ListGroup.Item>
-                    </ListGroup>
                   </Card>
                 </Col>
               ))
