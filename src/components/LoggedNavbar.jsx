@@ -1,5 +1,5 @@
 import { Container, Dropdown, Nav, Navbar } from "react-bootstrap";
-import logo from "../images/logo.jpeg";
+import logo from "../images/logo.png";
 import CartIndicator from "./CartIndicator";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";

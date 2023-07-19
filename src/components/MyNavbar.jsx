@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import logo from "../images/logo.jpeg";
+import logo from "../images/logo.png";
 import { Link } from "react-router-dom";
 
 const MyNavbar = () => (

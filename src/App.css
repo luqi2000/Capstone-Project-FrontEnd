@@ -1,8 +1,8 @@
 body {
-  background: linear-gradient(to right, black, rgb(250, 250, 250));
+  background: linear-gradient(to right, rgb(208, 162, 162), rgb(237, 237, 237));
 }
 .TopbarBeforeLogin {
-  background: linear-gradient(to right, black, rgb(250, 250, 250));
+  background: linear-gradient(to right, rgb(208, 162, 162), rgb(237, 237, 237));
   padding: 10px;
 }
 .logo-image {
