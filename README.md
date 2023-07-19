@@ -22,3 +22,6 @@ Gift shop center it's an online shop where you can buy gifts.
 - Backend: Java (Spring Boot) <br>
 - Database: PostgreSQL<br>
 - Testing: Postman<br>
+
+## Utils
+You can find the back-end repository at this link: https://github.com/luqi2000/Capstone-Project-BackEnd
