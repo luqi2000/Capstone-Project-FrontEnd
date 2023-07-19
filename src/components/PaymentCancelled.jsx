@@ -21,8 +21,8 @@ const PaymentCancelled = () => {
 
   return (
     <div className="text-center">
-      <div>Your order has been cancelled</div>
-      <div>You will be redirected to the home page in {count} seconds...</div>
+      <div className="text-danger">Your order has been cancelled</div>
+      <div className="text-danger">You will be redirected to the home page in {count} seconds...</div>
     </div>
   );
 };
