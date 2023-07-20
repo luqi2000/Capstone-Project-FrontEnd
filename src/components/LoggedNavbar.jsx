@@ -24,7 +24,7 @@ const LoggedNavbar = () => {
                   <FaUserCircle size={40} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/mainHome">
+                  <Dropdown.Item as={Link} to="/edit-profile">
                     Edit Profile
                   </Dropdown.Item>
                   <Dropdown.Item as={Link} to="/">
