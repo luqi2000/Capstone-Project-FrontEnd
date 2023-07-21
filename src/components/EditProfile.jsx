@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-// ... (importazioni rimanenti)
-
 const EditProfile = () => {
   const [userDetails, setUserDetails] = useState({
     name: "",
