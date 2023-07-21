@@ -10,8 +10,6 @@ const EditProfile = () => {
   const [userDetails, setUserDetails] = useState({
     name: "",
     surname: "",
-    email: "",
-    password: "",
     address: "",
     phoneNumber: ""
   });
@@ -58,8 +56,6 @@ const EditProfile = () => {
     const updatedUserData = {
       name: userDetails.name,
       surname: userDetails.surname,
-      email: userDetails.email,
-      password: userDetails.password,
       address: userDetails.address,
       phoneNumber: userDetails.phoneNumber
     };
@@ -125,30 +121,6 @@ const EditProfile = () => {
             onChange={e => setUserDetails(prevState => ({ ...prevState, surname: e.target.value }))}
             required
           />
-        </Form.Group>
-
-        <Form.Group className="mb-3 w-50" controlId="formBasicEmail">
-          <Form.Label className="text-white">Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Insert email"
-            value={userDetails.email}
-            onChange={e => setUserDetails(prevState => ({ ...prevState, email: e.target.value }))}
-            required
-          />
-          <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3 w-50" controlId="formBasicPassword">
-          <Form.Label className="text-white">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Insert your password"
-            value={userDetails.password}
-            onChange={e => setUserDetails(prevState => ({ ...prevState, password: e.target.value }))}
-            required
-          />
-          <Form.Text className="text-muted">We'll never share your password with anyone else.</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3 w-50" controlId="formBasicAddress">
