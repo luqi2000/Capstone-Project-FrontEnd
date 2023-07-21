@@ -3,6 +3,7 @@ import LoggedNavbar from "./LoggedNavbar";
 import Myfooter from "./Myfooter";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // ... (importazioni rimanenti)
 
@@ -14,10 +15,12 @@ const EditProfile = () => {
     phoneNumber: ""
   });
   const userId = useSelector(state => state.user);
+  const navigate = useNavigate();
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -87,6 +90,32 @@ const EditProfile = () => {
         setErrorMessage("Errore durante l'aggiornamento del profilo: " + error.message);
       });
   };
+  const handleDeleteConfirmation = shouldDelete => {
+    if (shouldDelete) {
+      // Make the fetch request to delete the profile
+      fetch(`http://localhost:3001/user/${userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
+        }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Error while deleting user profile");
+          }
+          // Profile deleted successfully, navigate to "/loggedhome"
+          navigate("/");
+        })
+        .catch(error => {
+          // Handle the error if the deletion failed
+          console.error(error);
+        });
+    }
+
+    // Close the delete confirmation modal, regardless of the user's choice
+    setShowDeleteConfirmation(false);
+  };
 
   const handleCloseSuccessModal = () => {
     setShowSuccessModal(false);
@@ -95,6 +124,11 @@ const EditProfile = () => {
   const handleCloseErrorModal = () => {
     setShowErrorModal(false);
     setErrorMessage("");
+  };
+
+  const handleDeleteProfile = () => {
+    // Show the delete confirmation modal
+    setShowDeleteConfirmation(true);
   };
 
   return (
@@ -145,12 +179,11 @@ const EditProfile = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3 w-50" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" className="text-white" label="Check me out" />
-        </Form.Group>
-
         <Button variant="primary" type="submit">
           Edit
+        </Button>
+        <Button className="ms-3" variant="danger" onClick={handleDeleteProfile}>
+          Delete Profile
         </Button>
       </Form>
       <Modal show={showSuccessModal} onHide={handleCloseSuccessModal}>
@@ -176,6 +209,22 @@ const EditProfile = () => {
         <Modal.Footer>
           <Button variant="primary" onClick={handleCloseErrorModal}>
             Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={showDeleteConfirmation} onHide={() => handleDeleteConfirmation(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Profile</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Are you sure you want to delete your profile?</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => handleDeleteConfirmation(false)}>
+            No
+          </Button>
+          <Button variant="danger" onClick={() => handleDeleteConfirmation(true)}>
+            Yes, Delete
           </Button>
         </Modal.Footer>
       </Modal>
