@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 const PaymentSuccess = () => {
   const navigate = useNavigate();
   const userId = useSelector(state => state.user);
-  const [countdown, setCountdown] = useState(10); // Stato per il countdown
+  const [countdown, setCountdown] = useState(10);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Esegui la richiesta POST a /orders qui
         const token = localStorage.getItem("token");
 
         const orderResponse = await fetch("http://localhost:3001/orders", {
@@ -28,8 +27,6 @@ const PaymentSuccess = () => {
         } else {
           console.error("Errore durante la creazione dell'ordine:", orderResponse);
         }
-
-        // Ora reindirizza l'utente alla home page o ad un'altra pagina di conferma dell'ordine
       } catch (error) {
         console.error("Errore durante la richiesta di creazione dell'ordine:", error);
       }
